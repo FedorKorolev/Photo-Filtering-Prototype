@@ -7,19 +7,25 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        likeRatingControl.iconName = "Like"
+        circleRatingControl.iconName = "Circle"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    @IBOutlet weak var starRatingControl: RatingControl!
+    @IBOutlet weak var likeRatingControl: RatingControl!
+    @IBOutlet weak var circleRatingControl: RatingControl!
 
+    @IBOutlet weak var image: UIImageView!
+
+
+    
+    
 
 }
 
