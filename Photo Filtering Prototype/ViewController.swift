@@ -15,17 +15,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
+        
+        collectionView.delegate = self
+        
+        reloadAssets()
     }
 
     @IBOutlet weak var starRatingControl: RatingControl!
     @IBOutlet weak var likeRatingControl: RatingControl!
     @IBOutlet weak var circleRatingControl: RatingControl!
 
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
+   
 
-
-    
-    
-
+    private func reloadAssets() {
+        
+    }
 }
 
+extension ViewController: UICollectionViewDelegate {
+    
+}

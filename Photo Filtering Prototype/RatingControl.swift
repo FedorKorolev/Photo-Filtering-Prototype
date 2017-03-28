@@ -9,7 +9,7 @@
 import UIKit
 
 
-@IBDesignable class RatingControl: UIStackView {
+class RatingControl: UIStackView {
     
     //MARK: Properties
     private var ratingButtons = [UIButton]()
