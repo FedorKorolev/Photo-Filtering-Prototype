@@ -22,34 +22,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-B3-DpF">
-                                <rect key="frame" x="64" y="28" width="192" height="112"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-B3-DpF" userLabel="Rating Controls">
+                                <rect key="frame" x="16" y="28" width="288" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="52c-tY-wRy" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="192" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="192" id="61U-f5-ok0"/>
-                                            <constraint firstAttribute="height" constant="32" id="nrK-We-5MN"/>
-                                        </constraints>
+                                        <rect key="frame" x="48" y="0.0" width="192" height="32"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hsy-Yp-Y18" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="40" width="192" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="192" id="1dP-rT-N0x"/>
-                                            <constraint firstAttribute="height" constant="32" id="PSC-r2-bys"/>
-                                        </constraints>
+                                        <rect key="frame" x="48" y="40" width="192" height="32"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JDo-Io-RKT" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="80" width="192" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="192" id="FOg-s5-Kxc"/>
-                                            <constraint firstAttribute="height" constant="32" id="GRA-Su-ihU"/>
-                                        </constraints>
+                                        <rect key="frame" x="48" y="80" width="192" height="32"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cF6-hZ-WT7" userLabel="Filter Buttons">
+                                        <rect key="frame" x="0.0" y="120" width="288" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gp8-u8-rYa">
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                                                <state key="normal" title="Применить фильтр"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynJ-ke-KBm">
+                                                <rect key="frame" x="144" y="0.0" width="144" height="30"/>
+                                                <state key="normal" title="Сбросить фильтр"/>
+                                            </button>
+                                        </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="cF6-hZ-WT7" firstAttribute="leading" secondItem="yw0-B3-DpF" secondAttribute="leading" id="Yut-uI-eE5"/>
+                                    <constraint firstAttribute="trailing" secondItem="cF6-hZ-WT7" secondAttribute="trailing" id="c1m-HI-OWm"/>
+                                </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-Pr-v8T">
-                                <rect key="frame" x="16" y="172" width="288" height="396"/>
+                                <rect key="frame" x="16" y="194" width="288" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qQ6-gQ-94h">
                                     <size key="itemSize" width="80" height="80"/>
@@ -85,12 +90,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="yw0-B3-DpF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R7A-Yv-6yZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yw0-B3-DpF" secondAttribute="trailing" id="MDl-5e-FWo"/>
                             <constraint firstItem="yw0-B3-DpF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="TcF-Wn-Wba"/>
                             <constraint firstItem="T7o-Pr-v8T" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Ueg-qG-cPX"/>
                             <constraint firstItem="T7o-Pr-v8T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="YcD-fT-d2g"/>
+                            <constraint firstItem="yw0-B3-DpF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ziy-Pv-G7P"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T7o-Pr-v8T" secondAttribute="trailing" id="b0g-ND-gn9"/>
-                            <constraint firstItem="T7o-Pr-v8T" firstAttribute="top" secondItem="yw0-B3-DpF" secondAttribute="bottom" constant="32" id="g0G-z7-PWF"/>
+                            <constraint firstItem="T7o-Pr-v8T" firstAttribute="top" secondItem="yw0-B3-DpF" secondAttribute="bottom" constant="16" id="g0G-z7-PWF"/>
                         </constraints>
                     </view>
                     <connections>
