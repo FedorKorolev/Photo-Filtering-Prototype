@@ -6,17 +6,19 @@
 //  Copyright © 2017 Фёдор Королёв. All rights reserved.
 //
 
-import UIKit
+import Photos
 
 class PhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(selectedPhotoIndex)
+        
+        imageView.image = ImagesLoader.loadImage(from: ratedAsset!.asset,
+                                                 width: imageView.bounds.width,
+                                                 height: imageView.bounds.height)
     }
-
-    var selectedPhotoIndex = Int()
+    
+    var ratedAsset: RatedAsset? = nil
     
     @IBOutlet weak var imageView: UIImageView!
     

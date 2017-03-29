@@ -6,7 +6,6 @@
 //  Copyright © 2017 Фёдор Королёв. All rights reserved.
 //
 
-import UIKit
 import Photos
 
 class GalleryViewController: UIViewController {
@@ -66,14 +65,14 @@ extension GalleryViewController: UICollectionViewDataSource {
 extension GalleryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedPhotoIndex = indexPath.row
-        performSegue(withIdentifier: "Show Photo View", sender: selectedPhotoIndex)
+        let selectedRatedAsset = ratedAssets[indexPath.row]
+        performSegue(withIdentifier: "Show Photo View", sender: selectedRatedAsset)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destVC = segue.destination as? PhotoViewController,
-            let selectedPhotoIndex = sender as? Int {
-            destVC.selectedPhotoIndex = selectedPhotoIndex
+            let selectedRatedAsset = sender as? RatedAsset {
+            destVC.ratedAsset = selectedRatedAsset
         }
 
     }

@@ -6,7 +6,6 @@
 //  Copyright © 2017 Фёдор Королёв. All rights reserved.
 //
 
-import UIKit
 import Photos
 
 struct RatedAsset {

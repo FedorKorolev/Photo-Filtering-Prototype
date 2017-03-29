@@ -6,7 +6,6 @@
 //  Copyright © 2017 Фёдор Королёв. All rights reserved.
 //
 
-import UIKit
 import Photos
 
 struct ImagesLoader {
@@ -31,10 +30,11 @@ struct ImagesLoader {
         
         PHImageManager.default().requestImage(for: asset,
                                               targetSize: CGSize(width: width, height: height),
-                                              contentMode: .aspectFill,
+                                              contentMode: .aspectFit,
                                               options: nil) { (image, _) -> Void in
                                                 loadedImage = image!
         }
+        
         
         return loadedImage
     }

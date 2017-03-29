@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,26 +23,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-B3-DpF" userLabel="Rating Controls">
-                                <rect key="frame" x="16" y="72" width="288" height="150"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-B3-DpF" userLabel="Rating Controls">
+                                <rect key="frame" x="16" y="72" width="288" height="204"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="52c-tY-wRy" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
-                                        <rect key="frame" x="48" y="0.0" width="192" height="32"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="52c-tY-wRy" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
+                                        <rect key="frame" x="48" y="0.0" width="192" height="50"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hsy-Yp-Y18" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
-                                        <rect key="frame" x="48" y="40" width="192" height="32"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hsy-Yp-Y18" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
+                                        <rect key="frame" x="48" y="58" width="192" height="50"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JDo-Io-RKT" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
-                                        <rect key="frame" x="48" y="80" width="192" height="32"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JDo-Io-RKT" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
+                                        <rect key="frame" x="48" y="116" width="192" height="50"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cF6-hZ-WT7" userLabel="Filter Buttons">
-                                        <rect key="frame" x="0.0" y="120" width="288" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cF6-hZ-WT7" userLabel="Filter Buttons">
+                                        <rect key="frame" x="0.0" y="174" width="288" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gp8-u8-rYa">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gp8-u8-rYa">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
                                                 <state key="normal" title="Применить фильтр"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynJ-ke-KBm">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynJ-ke-KBm">
                                                 <rect key="frame" x="144" y="0.0" width="144" height="30"/>
                                                 <state key="normal" title="Сбросить фильтр"/>
                                             </button>
@@ -53,7 +54,7 @@
                                     <constraint firstAttribute="trailing" secondItem="cF6-hZ-WT7" secondAttribute="trailing" id="c1m-HI-OWm"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-Pr-v8T">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-Pr-v8T">
                                 <rect key="frame" x="16" y="238" width="288" height="330"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qQ6-gQ-94h">
@@ -124,31 +125,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sQL-AY-bmk">
-                                <rect key="frame" x="0.0" y="64" width="320" height="320"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sQL-AY-bmk">
+                                <rect key="frame" x="0.0" y="64" width="320" height="330.5"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6j-ow-5rI">
-                                <rect key="frame" x="0.0" y="392" width="320" height="176"/>
+                                <rect key="frame" x="0.0" y="402.5" width="320" height="165.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="TXh-Os-aAX" userLabel="Buttons Stack View">
-                                        <rect key="frame" x="59" y="49" width="203" height="79"/>
+                                        <rect key="frame" x="59" y="49" width="203" height="68.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdU-eO-HfZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="79"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="68.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="56"/>
                                                 <state key="normal" title="★">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqp-fj-WO6">
-                                                <rect key="frame" x="82" y="0.0" width="47" height="79"/>
+                                                <rect key="frame" x="82" y="0.0" width="47" height="68.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="56"/>
                                                 <state key="normal" title="❤︎">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lwd-Vx-Axi">
-                                                <rect key="frame" x="161" y="0.0" width="42" height="79"/>
+                                                <rect key="frame" x="161" y="0.0" width="42" height="68.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                                 <state key="normal" title="⚫"/>
                                             </button>
@@ -171,6 +172,7 @@
                             <constraint firstItem="sQL-AY-bmk" firstAttribute="top" secondItem="H10-IV-bl4" secondAttribute="bottom" id="cgH-EN-66d"/>
                             <constraint firstAttribute="trailing" secondItem="s6j-ow-5rI" secondAttribute="trailing" id="eXn-au-Q2D"/>
                             <constraint firstItem="s6j-ow-5rI" firstAttribute="leading" secondItem="Ucx-6X-obw" secondAttribute="leading" id="gSB-1R-Vis"/>
+                            <constraint firstItem="sQL-AY-bmk" firstAttribute="height" secondItem="s6j-ow-5rI" secondAttribute="height" multiplier="2" id="hu0-ww-1tk"/>
                             <constraint firstItem="F06-U9-2c6" firstAttribute="top" secondItem="s6j-ow-5rI" secondAttribute="bottom" id="owA-In-HWY"/>
                         </constraints>
                     </view>
