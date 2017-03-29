@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zzf-5I-fsV">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Gallery View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Photo_Filtering_Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GalleryViewController" customModule="Photo_Filtering_Prototype" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-B3-DpF" userLabel="Rating Controls">
-                                <rect key="frame" x="16" y="28" width="288" height="150"/>
+                                <rect key="frame" x="16" y="72" width="288" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="52c-tY-wRy" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
                                         <rect key="frame" x="48" y="0.0" width="192" height="32"/>
@@ -54,7 +54,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-Pr-v8T">
-                                <rect key="frame" x="16" y="194" width="288" height="374"/>
+                                <rect key="frame" x="16" y="238" width="288" height="330"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qQ6-gQ-94h">
                                     <size key="itemSize" width="80" height="80"/>
@@ -99,14 +99,101 @@
                             <constraint firstItem="T7o-Pr-v8T" firstAttribute="top" secondItem="yw0-B3-DpF" secondAttribute="bottom" constant="16" id="g0G-z7-PWF"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="GNT-3V-p1v"/>
                     <connections>
                         <outlet property="circleRatingControl" destination="JDo-Io-RKT" id="swH-jl-EdZ"/>
                         <outlet property="collectionView" destination="T7o-Pr-v8T" id="hBK-ED-wcl"/>
                         <outlet property="likeRatingControl" destination="Hsy-Yp-Y18" id="bsr-hU-Xsw"/>
                         <outlet property="starRatingControl" destination="52c-tY-wRy" id="8dx-uk-DFQ"/>
+                        <segue destination="1Rk-Kz-KrY" kind="show" identifier="Show Photo View" id="IaB-Cu-EFq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033.125" y="38.028169014084504"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="ZoI-B1-L1Z">
+            <objects>
+                <viewController id="1Rk-Kz-KrY" customClass="PhotoViewController" customModule="Photo_Filtering_Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H10-IV-bl4"/>
+                        <viewControllerLayoutGuide type="bottom" id="F06-U9-2c6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ucx-6X-obw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sQL-AY-bmk">
+                                <rect key="frame" x="0.0" y="64" width="320" height="320"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6j-ow-5rI">
+                                <rect key="frame" x="0.0" y="392" width="320" height="176"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="TXh-Os-aAX" userLabel="Buttons Stack View">
+                                        <rect key="frame" x="59" y="49" width="203" height="79"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdU-eO-HfZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="79"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="56"/>
+                                                <state key="normal" title="★">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqp-fj-WO6">
+                                                <rect key="frame" x="82" y="0.0" width="47" height="79"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="56"/>
+                                                <state key="normal" title="❤︎">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lwd-Vx-Axi">
+                                                <rect key="frame" x="161" y="0.0" width="42" height="79"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                                <state key="normal" title="⚫"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="TXh-Os-aAX" firstAttribute="centerY" secondItem="s6j-ow-5rI" secondAttribute="centerY" id="c1X-me-BqG"/>
+                                    <constraint firstItem="TXh-Os-aAX" firstAttribute="centerX" secondItem="s6j-ow-5rI" secondAttribute="centerX" id="pBc-L8-iKF"/>
+                                    <constraint firstItem="TXh-Os-aAX" firstAttribute="top" secondItem="s6j-ow-5rI" secondAttribute="top" constant="49" id="xKS-zW-cWQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sQL-AY-bmk" secondAttribute="trailing" id="0CT-6E-bEU"/>
+                            <constraint firstItem="sQL-AY-bmk" firstAttribute="leading" secondItem="Ucx-6X-obw" secondAttribute="leading" id="6vl-8Z-kSn"/>
+                            <constraint firstItem="s6j-ow-5rI" firstAttribute="top" secondItem="sQL-AY-bmk" secondAttribute="bottom" constant="8" id="J5y-bO-J34"/>
+                            <constraint firstItem="sQL-AY-bmk" firstAttribute="top" secondItem="H10-IV-bl4" secondAttribute="bottom" id="cgH-EN-66d"/>
+                            <constraint firstAttribute="trailing" secondItem="s6j-ow-5rI" secondAttribute="trailing" id="eXn-au-Q2D"/>
+                            <constraint firstItem="s6j-ow-5rI" firstAttribute="leading" secondItem="Ucx-6X-obw" secondAttribute="leading" id="gSB-1R-Vis"/>
+                            <constraint firstItem="F06-U9-2c6" firstAttribute="top" secondItem="s6j-ow-5rI" secondAttribute="bottom" id="owA-In-HWY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4fb-VS-Z4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882.5" y="38.028169014084504"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gHk-31-A5J">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zzf-5I-fsV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dVk-dH-8Qs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="to8-4I-BGl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8tU-N1-WOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="35.625" y="38.028169014084504"/>
         </scene>

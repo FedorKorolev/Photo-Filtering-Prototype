@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GalleryViewController.swift
 //  Photo Filtering Prototype
 //
 //  Created by Фёдор Королёв on 28.03.17.
@@ -9,11 +9,12 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController {
+class GalleryViewController: UIViewController {
 
     // Setup
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
         }
         
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
 
     // Data
@@ -39,7 +41,7 @@ class ViewController: UIViewController {
 }
 
 // Collection View Data Source
-extension ViewController: UICollectionViewDataSource {
+extension GalleryViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -55,5 +57,15 @@ extension ViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+// Collection View Delegate
+extension GalleryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedPhotoIndex = indexPath.row
+        performSegue(withIdentifier: "Show Photo View", sender: selectedPhotoIndex)
+    }
+}
+
+
 
 
