@@ -18,7 +18,7 @@ class GalleryViewController: UIViewController {
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
-        let images = ImagesLoader.loadImages()
+        let images = ImagesLoader.loadImages(width: 164, height: 164)
         for image in images {
             ratedPhotos.append(RatedPhoto(image: image))
         }
@@ -58,11 +58,20 @@ extension GalleryViewController: UICollectionViewDataSource {
     }
 }
 
-// Collection View Delegate
+// Navigation
 extension GalleryViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedPhotoIndex = indexPath.row
         performSegue(withIdentifier: "Show Photo View", sender: selectedPhotoIndex)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destVC = segue.destination as? PhotoViewController,
+            let selectedPhotoIndex = sender as? Int {
+            destVC.selectedPhotoIndex = selectedPhotoIndex
+        }
+
     }
 }
 

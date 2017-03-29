@@ -11,7 +11,7 @@ import Photos
 
 struct ImagesLoader {
     
-    static func loadImages() -> [UIImage] {
+    static func loadImages(width: CGFloat, height: CGFloat) -> [UIImage] {
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         fetchOptions.includeAssetSourceTypes = .typeUserLibrary
@@ -26,7 +26,7 @@ struct ImagesLoader {
         
         for asset in assets {
             PHImageManager.default().requestImage(for: asset,
-                                                  targetSize: CGSize(width: 160, height: 160),
+                                                  targetSize: CGSize(width: width, height: height),
                                                   contentMode: .aspectFill,
                                                   options: nil) { (image, _) -> Void in
                                                     images.append(image!)
