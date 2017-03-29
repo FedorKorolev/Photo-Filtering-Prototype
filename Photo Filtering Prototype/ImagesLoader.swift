@@ -13,7 +13,7 @@ struct ImagesLoader {
     
     static func loadImages(width: CGFloat, height: CGFloat) -> [UIImage] {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchOptions.includeAssetSourceTypes = .typeUserLibrary
         
         let fetchResults = PHAsset.fetchAssets(with: fetchOptions)
@@ -25,11 +25,15 @@ struct ImagesLoader {
         var images = [UIImage]()
         
         for asset in assets {
-            PHImageManager.default().requestImage(for: asset,
-                                                  targetSize: CGSize(width: width, height: height),
-                                                  contentMode: .aspectFill,
-                                                  options: nil) { (image, _) -> Void in
-                                                    images.append(image!)
+            if images.count <= 16 {
+                PHImageManager.default().requestImage(for: asset,
+                                                      targetSize: CGSize(width: width, height: height),
+                                                      contentMode: .aspectFill,
+                                                      options: nil) { (image, _) -> Void in
+                                                        images.append(image!)
+                }
+            } else {
+                break
             }
         }
         return images

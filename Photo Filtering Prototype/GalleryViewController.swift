@@ -38,6 +38,7 @@ class GalleryViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
    
     
+    
 }
 
 // Collection View Data Source
