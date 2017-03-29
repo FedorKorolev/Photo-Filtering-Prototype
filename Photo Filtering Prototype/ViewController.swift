@@ -11,18 +11,24 @@ import Photos
 
 class ViewController: UIViewController {
 
+    // Setup
     override func viewDidLoad() {
         super.viewDidLoad()
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
-        images = ImagesLoader.loadImages()
+        let images = ImagesLoader.loadImages()
+        for image in images {
+            ratedPhotos.append(RatedPhoto(image: image))
+        }
         
         collectionView.dataSource = self
     }
 
-    var images = [UIImage]()
+    // Data
+    var ratedPhotos = [RatedPhoto]()
     
+    // Outlets
     @IBOutlet weak var starRatingControl: RatingControl!
     @IBOutlet weak var likeRatingControl: RatingControl!
     @IBOutlet weak var circleRatingControl: RatingControl!
@@ -32,6 +38,7 @@ class ViewController: UIViewController {
     
 }
 
+// Collection View Data Source
 extension ViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -39,14 +46,14 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return ratedPhotos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCell
-        cell.imageView.image = images[indexPath.row]
+        cell.imageView.image = ratedPhotos[indexPath.row].image
         return cell
     }
-
-    
 }
+
+
