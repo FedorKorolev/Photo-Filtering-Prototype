@@ -16,23 +16,37 @@ class ViewController: UIViewController {
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
-        collectionView.delegate = self
+        images = ImagesLoader.loadImages()
         
-        reloadAssets()
+        collectionView.dataSource = self
     }
 
+    var images = [UIImage]()
+    
     @IBOutlet weak var starRatingControl: RatingControl!
     @IBOutlet weak var likeRatingControl: RatingControl!
     @IBOutlet weak var circleRatingControl: RatingControl!
 
     @IBOutlet weak var collectionView: UICollectionView!
    
-
-    private func reloadAssets() {
-        
-    }
+    
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension ViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCell
+        cell.imageView.image = images[indexPath.row]
+        return cell
+    }
+
     
 }

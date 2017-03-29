@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -47,24 +48,37 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-Pr-v8T">
-                                <rect key="frame" x="0.0" y="175" width="320" height="393"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-Pr-v8T">
+                                <rect key="frame" x="16" y="172" width="288" height="396"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qQ6-gQ-94h">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="80" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Reusable View" id="QkN-IG-I6z">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="QkN-IG-I6z" customClass="PhotoCell" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iIl-6h-Flz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="iIl-6h-Flz" firstAttribute="top" secondItem="QkN-IG-I6z" secondAttribute="top" id="O76-nM-HjR"/>
+                                            <constraint firstAttribute="bottom" secondItem="iIl-6h-Flz" secondAttribute="bottom" id="OFH-A9-9xY"/>
+                                            <constraint firstAttribute="trailing" secondItem="iIl-6h-Flz" secondAttribute="trailing" id="PCi-h0-6au"/>
+                                            <constraint firstItem="iIl-6h-Flz" firstAttribute="leading" secondItem="QkN-IG-I6z" secondAttribute="leading" id="x2p-QZ-Ty9"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="iIl-6h-Flz" id="kXd-1o-oX6"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -73,6 +87,10 @@
                         <constraints>
                             <constraint firstItem="yw0-B3-DpF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R7A-Yv-6yZ"/>
                             <constraint firstItem="yw0-B3-DpF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="TcF-Wn-Wba"/>
+                            <constraint firstItem="T7o-Pr-v8T" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Ueg-qG-cPX"/>
+                            <constraint firstItem="T7o-Pr-v8T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="YcD-fT-d2g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T7o-Pr-v8T" secondAttribute="trailing" id="b0g-ND-gn9"/>
+                            <constraint firstItem="T7o-Pr-v8T" firstAttribute="top" secondItem="yw0-B3-DpF" secondAttribute="bottom" constant="32" id="g0G-z7-PWF"/>
                         </constraints>
                     </view>
                     <connections>
