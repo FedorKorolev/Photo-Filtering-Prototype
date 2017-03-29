@@ -18,17 +18,17 @@ class GalleryViewController: UIViewController {
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
-        let images = ImagesLoader.loadImages(width: 164, height: 164)
-        for image in images {
-            ratedPhotos.append(RatedPhoto(image: image))
+        let assets: [PHAsset] = ImagesLoader.loadAssets()
+        for asset in assets {
+            ratedAssets.append(RatedAsset(asset: asset))
         }
         
         collectionView.dataSource = self
         collectionView.delegate = self
     }
 
-    // Data
-    var ratedPhotos = [RatedPhoto]()
+    // Assets Data
+    var ratedAssets = [RatedAsset]()
     
     // Outlets
     @IBOutlet weak var starRatingControl: RatingControl!
@@ -49,12 +49,15 @@ extension GalleryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ratedPhotos.count
+        return ratedAssets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCell
-        cell.imageView.image = ratedPhotos[indexPath.row].image
+        let asset = ratedAssets[indexPath.row].asset
+        let image = ImagesLoader.loadImage(from: asset, width: cell.bounds.width * 2, height: cell.bounds.height * 2)
+        cell.imageView.image = image
         return cell
     }
 }

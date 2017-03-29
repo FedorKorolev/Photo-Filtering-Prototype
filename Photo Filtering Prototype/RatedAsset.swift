@@ -1,5 +1,5 @@
 //
-//  RatedPhoto.swift
+//  RatedAsset.swift
 //  Photo Filtering Prototype
 //
 //  Created by Фёдор Королёв on 29.03.17.
@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import Photos
 
-struct RatedPhoto {
+struct RatedAsset {
     
-    let image: UIImage
+    let asset: PHAsset
     
     var stars = 0
     var likes = 0
     var circles = 0
     
-    init(image: UIImage) {
-        self.image = image
+    init(asset: PHAsset) {
+        self.asset = asset
     }
 }
