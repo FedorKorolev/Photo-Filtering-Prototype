@@ -48,6 +48,13 @@ class RatingsLoader {
     
     private var _filteredResults:[String:PhotoRating]?
     
+    func ratingOf(assetId:String)->PhotoRating
+    {
+        var rating = ratings[assetId] ?? PhotoRating()
+        rating.photoId = assetId
+        return rating
+    }
+    
     func update(rating:PhotoRating)
     {
         defer { saveRatings() }

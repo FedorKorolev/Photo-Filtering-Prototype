@@ -23,16 +23,32 @@ struct ImagesLoader {
         return assets
     }
     
-        
-    static func loadImage(from asset: PHAsset, width: CGFloat, height: CGFloat) -> UIImage {
+    static func assets(assets:[PHAsset], filteredBy ids:[String])->[PHAsset]
+    {
+        if ids.count == 0 {
+            return []
+        }
+        return assets.filter{ ids.contains($0.localIdentifier) }
+    }
+    
+    static func loadImage(from asset: PHAsset, width: CGFloat, height: CGFloat, highQuaility:Bool) -> UIImage {
         
         var loadedImage = UIImage()
         
+        let options = PHImageRequestOptions()
+        options.version = PHImageRequestOptionsVersion.current
+        options.deliveryMode =  highQuaility ? .highQualityFormat : .opportunistic
+        options.resizeMode = PHImageRequestOptionsResizeMode.exact
+        options.isNetworkAccessAllowed = false
+        options.isSynchronous = true
+        
         PHImageManager.default().requestImage(for: asset,
                                               targetSize: CGSize(width: width, height: height),
-                                              contentMode: .aspectFit,
-                                              options: nil) { (image, _) -> Void in
-                                                loadedImage = image!
+                                              contentMode: .aspectFill,
+                                              options: options) { (image, _) -> Void in
+                                                if let im = image {
+                                                    loadedImage = im
+                                                }
         }
         
         

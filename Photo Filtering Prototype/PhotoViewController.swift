@@ -10,55 +10,66 @@ import Photos
 
 class PhotoViewController: UIViewController {
 
+    @IBOutlet var starButton: UIButton!
+    @IBOutlet var likeButton: UIButton!
+    @IBOutlet var circleButton: UIButton!
+    
+    
+    var photo:PHAsset!
+    var rating:PhotoRating!
+    var ratingLoader = RatingsLoader.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.layoutIfNeeded()
         // load image
-        imageView.image = ImagesLoader.loadImage(from: selected["asset"]! as! PHAsset,
-                                                 width: imageView.bounds.width,
-                                                 height: imageView.bounds.height)
+        imageView.image = ImagesLoader.loadImage(from: photo,
+                                                 width: imageView.bounds.width * UIScreen.main.scale,
+                                                 height: imageView.bounds.height * UIScreen.main.scale, highQuaility: true)
         
         // load rating from storage
-        arrayOfRatingDicts = (defaults.value(forKey: "arrayOfRatingDicts") as? [[String : Int]] ) ?? [ [String : Int] ]()
-        print("Rating Loaded\n \(arrayOfRatingDicts)")
-        
-        // load index as int
-        index = selected["index"] as! Int
+        print("Rating Loaded\n \(rating)")
+        updateButtons()
     }
-    
-    // Properties
-    let defaults = UserDefaults.standard
-    
-    var arrayOfRatingDicts = [[String : Int]]()
-    
-    var selected  = [String : Any]()
-    var index = Int()
-    
     
     // Outlets
     @IBOutlet weak var imageView: UIImageView!
     
     @IBAction func starPressed(_ sender: UIButton) {
-        arrayOfRatingDicts[index]["stars"]! += 1
-        saveRating()
+        rating.stars += 1
+        saveRatingAndUpdateUI()
     }
     
     @IBAction func likePressed(_ sender: UIButton) {
-        arrayOfRatingDicts[index]["likes"]! += 1
-        saveRating()
+        rating.likes += 1
+        saveRatingAndUpdateUI()
     }
     
     @IBAction func circlePressed(_ sender: UIButton) {
-        arrayOfRatingDicts[index]["circles"]! += 1
-        saveRating()
+        rating.circles += 1
+        saveRatingAndUpdateUI()
     }
     
-    // Save rating to storage
-    func saveRating() {
-        defaults.set(arrayOfRatingDicts, forKey: "arrayOfRatingDicts")
-        print("Rating Updated and Saved")
-        print(defaults.value(forKey: "arrayOfRatingDicts") as! [[String : Int]])
+    private func saveRatingAndUpdateUI(){
+        ratingLoader.update(rating: rating)
+        ratingLoader.saveRatings()
+        updateButtons()
     }
-
+    
+    private func updateButtons(){
+        update(button: starButton, with: rating.stars)
+        update(button: likeButton, with: rating.likes)
+        update(button: circleButton, with: rating.circles)
+    }
+    
+    private func update(button:UIButton, with rating:Int)
+    {
+        button.titleLabel?.numberOfLines = 2
+        let firstLne = button.currentTitle!.components(separatedBy: "\n").first!
+        
+        let additionalLine = "\n" + (rating > 0 ? "\(rating)" : "")
+        button.setTitle(firstLne + additionalLine,
+                        for: .normal)
+    }
 }
