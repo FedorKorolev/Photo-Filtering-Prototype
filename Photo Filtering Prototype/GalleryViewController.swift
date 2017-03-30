@@ -10,6 +10,19 @@ import Photos
 
 class GalleryViewController: UIViewController {
 
+    // Outlets
+    @IBOutlet weak var starRatingControl: RatingControl!
+    @IBOutlet weak var likeRatingControl: RatingControl!
+    @IBOutlet weak var circleRatingControl: RatingControl!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // Assets Data
+    var assets = [PHAsset]()
+    
+    // Rating Dictionary
+    var ratingLoader = RatingsLoader.shared
+    
     // Setup
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,48 +31,29 @@ class GalleryViewController: UIViewController {
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
+        [likeRatingControl,circleRatingControl,starRatingControl].forEach { $0.delegate = self }
+        
+        
         // load assets
         assets = ImagesLoader.loadAssets()
-    
-        // load defaults
-        let defaults = UserDefaults.standard
-        
-        // check stored rating
-        let array = defaults.value(forKey: "arrayOfRatingDicts") as? [[String : Int]]
-        if (array?.isEmpty)! {
-            for _ in assets {
-                arrayOfRatingDicts.append(["stars" : 0,
-                                           "likes" : 0,
-                                           "circles": 0
-                    ])
-            }
-            defaults.set(arrayOfRatingDicts, forKey: "arrayOfRatingDicts")
-            print("Rating Initialized\n \(arrayOfRatingDicts)")
-        } else {
-            arrayOfRatingDicts = array!
-            print("Rating Loaded\n \(arrayOfRatingDicts)")
-        }
         
         // Setup collection
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+}
 
-    // Assets Data
-    var assets = [PHAsset]()
+extension GalleryViewController: RatingControlDelegate {
     
-    // Rating Dictionary
-    var arrayOfRatingDicts = [[String : Int]]()
-    
-    
-    // Outlets
-    @IBOutlet weak var starRatingControl: RatingControl!
-    @IBOutlet weak var likeRatingControl: RatingControl!
-    @IBOutlet weak var circleRatingControl: RatingControl!
-
-    @IBOutlet weak var collectionView: UICollectionView!
-   
-    
+    func control(_ control: RatingControl, changeRatingTo rating: Int) {
+        
+        switch control {
+        case starRatingControl:
+            ratingLoader.filter.
+        default:
+            <#code#>
+        }
+    }
     
 }
 
