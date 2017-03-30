@@ -13,13 +13,14 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.layoutIfNeeded()
         // load image
         imageView.image = ImagesLoader.loadImage(from: selected["asset"]! as! PHAsset,
                                                  width: imageView.bounds.width,
                                                  height: imageView.bounds.height)
         
         // load rating from storage
-        arrayOfRatingDicts = defaults.value(forKey: "arrayOfRatingDicts") as! [[String : Int]]
+        arrayOfRatingDicts = (defaults.value(forKey: "arrayOfRatingDicts") as? [[String : Int]] ) ?? [ [String : Int] ]()
         print("Rating Loaded\n \(arrayOfRatingDicts)")
         
         // load index as int
