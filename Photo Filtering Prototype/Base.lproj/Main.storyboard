@@ -23,26 +23,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-B3-DpF" userLabel="Rating Controls">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-B3-DpF" userLabel="Rating Controls">
                                 <rect key="frame" x="16" y="72" width="288" height="204"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="52c-tY-wRy" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="52c-tY-wRy" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
                                         <rect key="frame" x="48" y="0.0" width="192" height="50"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hsy-Yp-Y18" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hsy-Yp-Y18" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
                                         <rect key="frame" x="48" y="58" width="192" height="50"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JDo-Io-RKT" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JDo-Io-RKT" customClass="RatingControl" customModule="Photo_Filtering_Prototype" customModuleProvider="target">
                                         <rect key="frame" x="48" y="116" width="192" height="50"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cF6-hZ-WT7" userLabel="Filter Buttons">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cF6-hZ-WT7" userLabel="Filter Buttons">
                                         <rect key="frame" x="0.0" y="174" width="288" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gp8-u8-rYa">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gp8-u8-rYa">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
                                                 <state key="normal" title="Применить фильтр"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynJ-ke-KBm">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynJ-ke-KBm">
                                                 <rect key="frame" x="144" y="0.0" width="144" height="30"/>
                                                 <state key="normal" title="Сбросить фильтр"/>
                                             </button>
@@ -54,8 +54,8 @@
                                     <constraint firstAttribute="trailing" secondItem="cF6-hZ-WT7" secondAttribute="trailing" id="c1m-HI-OWm"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-Pr-v8T">
-                                <rect key="frame" x="16" y="238" width="288" height="330"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-Pr-v8T">
+                                <rect key="frame" x="16" y="292" width="288" height="276"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qQ6-gQ-94h">
                                     <size key="itemSize" width="80" height="80"/>
@@ -140,6 +140,9 @@
                                                 <state key="normal" title="★">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="starPressed:" destination="1Rk-Kz-KrY" eventType="touchUpInside" id="HKP-qC-Mm4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqp-fj-WO6">
                                                 <rect key="frame" x="82" y="0.0" width="47" height="68.5"/>
@@ -147,11 +150,17 @@
                                                 <state key="normal" title="❤︎">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="likePressed:" destination="1Rk-Kz-KrY" eventType="touchUpInside" id="cgu-Tj-QAQ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lwd-Vx-Axi">
                                                 <rect key="frame" x="161" y="0.0" width="42" height="68.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                                 <state key="normal" title="⚫"/>
+                                                <connections>
+                                                    <action selector="circlePressed:" destination="1Rk-Kz-KrY" eventType="touchUpInside" id="aXS-wq-o1f"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
