@@ -23,6 +23,13 @@ struct ImagesLoader {
         return assets
     }
     
+    static func assets(assets:[PHAsset], filteredBy ids:[String])->[PHAsset]
+    {
+        if ids.count == 0 {
+            return []
+        }
+        return assets.filter{ ids.contains($0.localIdentifier) }
+    }
         
     static func loadImage(from asset: PHAsset, width: CGFloat, height: CGFloat) -> UIImage {
         

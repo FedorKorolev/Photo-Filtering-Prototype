@@ -17,7 +17,7 @@ class RatingControl: UIStackView {
     
     //MARK: Properties
     private var ratingButtons = [UIButton]()
-    @IBOutlet var delegate:RatingControlDelegate?
+    var delegate:RatingControlDelegate?
     
     var iconName = "Star" {
         didSet {
