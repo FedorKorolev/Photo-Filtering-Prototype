@@ -6,14 +6,13 @@
 //  Copyright © 2017 Фёдор Королёв. All rights reserved.
 //
 
-import UIKit
 import Photos
 
 struct ImagesLoader {
     
-    static func loadImages(width: CGFloat, height: CGFloat) -> [UIImage] {
+    static func loadAssets() -> [PHAsset] {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchOptions.includeAssetSourceTypes = .typeUserLibrary
         
         let fetchResults = PHAsset.fetchAssets(with: fetchOptions)
@@ -21,19 +20,22 @@ struct ImagesLoader {
         fetchResults.enumerateObjects(using: {(object: AnyObject, count: Int, stop: UnsafeMutablePointer) in
             assets.append(object as! PHAsset)
         })
-        
-        var images = [UIImage]()
-        
-        for asset in assets {
-            PHImageManager.default().requestImage(for: asset,
-                                                  targetSize: CGSize(width: width, height: height),
-                                                  contentMode: .aspectFill,
-                                                  options: nil) { (image, _) -> Void in
-                                                    images.append(image!)
-            }
-        }
-        return images
-        
+        return assets
     }
-
+    
+        
+    static func loadImage(from asset: PHAsset, width: CGFloat, height: CGFloat) -> UIImage {
+        
+        var loadedImage = UIImage()
+        
+        PHImageManager.default().requestImage(for: asset,
+                                              targetSize: CGSize(width: width, height: height),
+                                              contentMode: .aspectFit,
+                                              options: nil) { (image, _) -> Void in
+                                                loadedImage = image!
+        }
+        
+        
+        return loadedImage
+    }
 }

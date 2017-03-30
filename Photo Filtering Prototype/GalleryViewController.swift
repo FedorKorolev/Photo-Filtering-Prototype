@@ -6,7 +6,6 @@
 //  Copyright © 2017 Фёдор Королёв. All rights reserved.
 //
 
-import UIKit
 import Photos
 
 class GalleryViewController: UIViewController {
@@ -15,20 +14,43 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set icons
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
-        let images = ImagesLoader.loadImages(width: 164, height: 164)
-        for image in images {
-            ratedPhotos.append(RatedPhoto(image: image))
+        // load assets
+        assets = ImagesLoader.loadAssets()
+    
+        // load defaults
+        let defaults = UserDefaults.standard
+        
+        // check stored rating
+        let array = defaults.value(forKey: "arrayOfRatingDicts") as? [[String : Int]]
+        if (array?.isEmpty)! {
+            for _ in assets {
+                arrayOfRatingDicts.append(["stars" : 0,
+                                           "likes" : 0,
+                                           "circles": 0
+                    ])
+            }
+            defaults.set(arrayOfRatingDicts, forKey: "arrayOfRatingDicts")
+            print("Rating Initialized\n \(arrayOfRatingDicts)")
+        } else {
+            arrayOfRatingDicts = array!
+            print("Rating Loaded\n \(arrayOfRatingDicts)")
         }
         
+        // Setup collection
         collectionView.dataSource = self
         collectionView.delegate = self
     }
 
-    // Data
-    var ratedPhotos = [RatedPhoto]()
+    // Assets Data
+    var assets = [PHAsset]()
+    
+    // Rating Dictionary
+    var arrayOfRatingDicts = [[String : Int]]()
+    
     
     // Outlets
     @IBOutlet weak var starRatingControl: RatingControl!
@@ -37,6 +59,7 @@ class GalleryViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
    
+    
     
 }
 
@@ -48,12 +71,15 @@ extension GalleryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ratedPhotos.count
+        return assets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCell
-        cell.imageView.image = ratedPhotos[indexPath.row].image
+        let asset = assets[indexPath.row]
+        let image = ImagesLoader.loadImage(from: asset, width: cell.bounds.width * 2, height: cell.bounds.height * 2)
+        cell.imageView.image = image
         return cell
     }
 }
@@ -62,14 +88,17 @@ extension GalleryViewController: UICollectionViewDataSource {
 extension GalleryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedPhotoIndex = indexPath.row
-        performSegue(withIdentifier: "Show Photo View", sender: selectedPhotoIndex)
+        
+        let selected = ["index" : indexPath.row,
+                        "asset" : assets[indexPath.row]] as [String : Any]
+    
+        performSegue(withIdentifier: "Show Photo View", sender: selected)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destVC = segue.destination as? PhotoViewController,
-            let selectedPhotoIndex = sender as? Int {
-            destVC.selectedPhotoIndex = selectedPhotoIndex
+            let selected = sender as? [String : Any] {
+            destVC.selected = selected
         }
 
     }

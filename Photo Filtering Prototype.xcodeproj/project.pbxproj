@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7580AABA1E8C020A00372FD1 /* RatedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7580AAB91E8C020A00372FD1 /* RatedPhoto.swift */; };
 		7580AABF1E8C2CAC00372FD1 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7580AABE1E8C2CAC00372FD1 /* PhotoViewController.swift */; };
 		7585149E1E8AC8AD007A09E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7585149D1E8AC8AD007A09E8 /* AppDelegate.swift */; };
 		758514A01E8AC8AD007A09E8 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7585149F1E8AC8AD007A09E8 /* GalleryViewController.swift */; };
@@ -20,7 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7580AAB91E8C020A00372FD1 /* RatedPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatedPhoto.swift; sourceTree = "<group>"; };
 		7580AABE1E8C2CAC00372FD1 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		7585149A1E8AC8AD007A09E8 /* Photo Filtering Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Filtering Prototype.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7585149D1E8AC8AD007A09E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 		7580AABD1E8C2C4900372FD1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7580AAB91E8C020A00372FD1 /* RatedPhoto.swift */,
 				75C77CBD1E8BE35D00F29247 /* ImagesLoader.swift */,
 			);
 			name = Models;
@@ -187,7 +184,6 @@
 				758514A01E8AC8AD007A09E8 /* GalleryViewController.swift in Sources */,
 				75C77CC01E8BEAF200F29247 /* PhotoCell.swift in Sources */,
 				75D054881E8AD68C0086A4D6 /* RatingControl.swift in Sources */,
-				7580AABA1E8C020A00372FD1 /* RatedPhoto.swift in Sources */,
 				7580AABF1E8C2CAC00372FD1 /* PhotoViewController.swift in Sources */,
 				75C77CBE1E8BE35D00F29247 /* ImagesLoader.swift in Sources */,
 				7585149E1E8AC8AD007A09E8 /* AppDelegate.swift in Sources */,
