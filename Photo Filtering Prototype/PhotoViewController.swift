@@ -25,8 +25,8 @@ class PhotoViewController: UIViewController {
         view.layoutIfNeeded()
         // load image
         imageView.image = ImagesLoader.loadImage(from: photo,
-                                                 width: imageView.bounds.width,
-                                                 height: imageView.bounds.height)
+                                                 width: imageView.bounds.width * UIScreen.main.scale,
+                                                 height: imageView.bounds.height * UIScreen.main.scale, highQuaility: true)
         
         // load rating from storage
         print("Rating Loaded\n \(rating)")

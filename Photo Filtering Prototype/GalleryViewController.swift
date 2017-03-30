@@ -94,7 +94,7 @@ extension GalleryViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCell
         let asset = filteredAssets[indexPath.row]
-        let image = ImagesLoader.loadImage(from: asset, width: cell.bounds.width * 2, height: cell.bounds.height * 2)
+        let image = ImagesLoader.loadImage(from: asset, width: cell.bounds.width * 2, height: cell.bounds.height * 2, highQuaility: false)
         cell.imageView.image = image
         return cell
     }
