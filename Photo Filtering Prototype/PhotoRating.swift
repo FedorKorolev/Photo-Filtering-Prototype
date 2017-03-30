@@ -14,10 +14,12 @@ struct PhotoRating {
     var likes = 0
     var circles = 0
     
+    var hasAtLeastOnePoint:Bool {
+        return stars + likes + circles > 0
+    }
     
-    init?(dict:[String : Any]){
-        guard let id = dict["id"] as? String,
-            let stars = dict["stars"] as? Int,
+    init?(dict:[String : Any], id:String){
+        guard let stars = dict["stars"] as? Int,
             let likes = dict["likes"] as? Int,
             let circles = dict["circles"] as? Int else {
                 return nil
@@ -29,10 +31,23 @@ struct PhotoRating {
         self.circles = circles
     }
     
-    func toDict()->[String:Any]{
-        return ["id" : self.photoId,
-                "stars" : self.stars,
-                "likes":self.likes,
+    init(){
+        photoId = ""
+        stars = 0
+        likes = 0
+        circles = 0
+    }
+    
+    func toDict()->[String:Int]{
+        return ["stars" : self.stars,
+                "likes" : self.likes,
                 "circles":self.circles]
-    }    
+    }
+    
+    func ratingIsSameAsIn(otherRating:PhotoRating)->Bool
+    {
+        return stars == otherRating.stars &&
+        likes == otherRating.likes &&
+        circles == otherRating.circles
+    }
 }
