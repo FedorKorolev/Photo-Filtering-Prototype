@@ -40,7 +40,11 @@ class GalleryViewController: UIViewController {
         // Setup collection
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateFilteredResults()
     }
     
@@ -101,18 +105,17 @@ extension GalleryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let selected = ["index" : indexPath.row,
-                        "asset" : filteredAssets[indexPath.row]] as [String : Any]
+        let selected = filteredAssets[indexPath.row]
     
         performSegue(withIdentifier: "Show Photo View", sender: selected)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destVC = segue.destination as? PhotoViewController,
-            let selected = sender as? [String : Any] {
-            destVC.selected = selected
+            let photo = sender as? PHAsset {
+            destVC.photo = photo
+            destVC.rating = ratingLoader.ratingOf(assetId: photo.localIdentifier)
         }
-
     }
 }
 

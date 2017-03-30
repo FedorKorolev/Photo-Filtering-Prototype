@@ -11,7 +11,7 @@ import Foundation
 struct PhotoRating {
     private let maxValue = 5
     
-    let photoId:String
+    var photoId:String
     var stars = 0    {  didSet {  if stars > maxValue { stars = 0 }  }  }
     var likes = 0    {  didSet {  if likes > maxValue { likes = 0 }  }  }
     var circles = 0  {  didSet {  if circles > maxValue { circles = 0 }  }  }
