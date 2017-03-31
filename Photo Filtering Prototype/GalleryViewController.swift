@@ -83,7 +83,10 @@ class GalleryViewController: UIViewController {
             PHPhotoLibrary.requestAuthorization() { status in
                 switch status {
                 case .authorized:
-                    self.assets = ImagesLoader.loadAssets()
+                    DispatchQueue.main.async {
+                        self.assets = ImagesLoader.loadAssets()
+                        self.updateFilteredResults()
+                    }
                 case .denied, .restricted:
                     self.showAuthError()
                 case .notDetermined: 

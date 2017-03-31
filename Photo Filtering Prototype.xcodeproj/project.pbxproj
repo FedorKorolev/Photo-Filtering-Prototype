@@ -323,6 +323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = G5Q3NBTLFN;
 				INFOPLIST_FILE = "Photo Filtering Prototype/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ias.Photo-Filtering-Prototype";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -336,6 +337,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = G5Q3NBTLFN;
 				INFOPLIST_FILE = "Photo Filtering Prototype/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ias.Photo-Filtering-Prototype";
 				PRODUCT_NAME = "$(TARGET_NAME)";
