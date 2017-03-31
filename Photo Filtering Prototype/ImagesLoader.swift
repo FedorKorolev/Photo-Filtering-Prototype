@@ -50,8 +50,6 @@ struct ImagesLoader {
                                                     loadedImage = im
                                                 }
         }
-        
-        
         return loadedImage
     }
 }

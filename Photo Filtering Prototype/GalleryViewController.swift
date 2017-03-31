@@ -17,6 +17,9 @@ class GalleryViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    
     // Assets Data
     var assets = [PHAsset]()
     var filteredAssets = [PHAsset]()
@@ -52,9 +55,11 @@ class GalleryViewController: UIViewController {
         if ratingLoader.filter.hasAtLeastOnePoint {
             filteredAssets = ImagesLoader.assets(assets: assets,
                                                  filteredBy: ratingLoader.filteredResults.keys.map{ $0 })
+            addButton.isEnabled = true
         }
         else {
             filteredAssets = assets
+            addButton.isEnabled = false
         }
         collectionView.reloadData()
     }
