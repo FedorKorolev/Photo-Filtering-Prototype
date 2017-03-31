@@ -63,20 +63,47 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // set icons
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
         [likeRatingControl,circleRatingControl,starRatingControl].forEach { $0.delegate = self }
         
-        // load assets
-        assets = ImagesLoader.loadAssets()
+        // check for authorization and load assets
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            assets = ImagesLoader.loadAssets()
+        case .denied, .restricted:
+            showAuthError()
+        case .notDetermined:
+            // ask for permissions
+            PHPhotoLibrary.requestAuthorization() { status in
+                switch status {
+                case .authorized:
+                    self.assets = ImagesLoader.loadAssets()
+                case .denied, .restricted:
+                    self.showAuthError()
+                case .notDetermined: 
+                    break
+                }
+            }
+        }
         
         // Setup collection
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
+    func showAuthError() {
+        let alert = UIAlertController(title: "Не удаётся загрузить фото без вашего разрешения. Разрешите доступ к фото в настройках.", message: nil, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default) { _ in
+        }
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
