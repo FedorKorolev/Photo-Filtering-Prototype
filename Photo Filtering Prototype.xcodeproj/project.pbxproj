@@ -146,7 +146,7 @@
 				TargetAttributes = {
 					758514991E8AC8AC007A09E8 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = A4JV56P8N3;
+						DevelopmentTeam = G5Q3NBTLFN;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -317,10 +317,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = A4JV56P8N3;
+				DEVELOPMENT_TEAM = G5Q3NBTLFN;
 				INFOPLIST_FILE = "Photo Filtering Prototype/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.test.Photo-Filtering-Prototype";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ias.Photo-Filtering-Prototype";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -330,10 +330,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = A4JV56P8N3;
+				DEVELOPMENT_TEAM = G5Q3NBTLFN;
 				INFOPLIST_FILE = "Photo Filtering Prototype/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.test.Photo-Filtering-Prototype";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ias.Photo-Filtering-Prototype";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
