@@ -101,7 +101,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GNT-3V-p1v">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="ihf-iQ-aj8"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="ihf-iQ-aj8">
+                            <connections>
+                                <action selector="addAlbumPressed:" destination="BYZ-38-t0r" id="Pk1-ie-AWQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="ihf-iQ-aj8" id="xQH-sy-LEd"/>

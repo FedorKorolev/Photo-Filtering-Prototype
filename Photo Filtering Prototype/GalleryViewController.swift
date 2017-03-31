@@ -19,6 +19,38 @@ class GalleryViewController: UIViewController {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     
+    // Add Album Action
+    @IBAction func addAlbumPressed(_ sender: UIBarButtonItem) {
+        
+        let alertController = UIAlertController(title: "Добавить отфильтрованные фотографии в альбом?", message: nil, preferredStyle: .alert)
+        
+        let inputAction = UIAlertAction(title: "Добавить", style: .default) { [weak alertController] _ in
+            if let alertController = alertController {
+                let albumNameTextField = alertController.textFields![0] as UITextField
+                
+              AlbumCreator.createAlbum(with: albumNameTextField.text!, assets: self.filteredAssets)
+            }
+        }
+        inputAction.isEnabled = false
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Имя альбома"
+            
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { notification in
+                inputAction.isEnabled = textField.text != ""
+            }
+        }
+        
+        let canсelAction = UIAlertAction(title: "Отмена", style: .cancel) { _ in
+            
+        }
+        alertController.addAction(inputAction)
+        alertController.addAction(canсelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
     
     // Assets Data
     var assets = [PHAsset]()
