@@ -17,6 +17,41 @@ class GalleryViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    // Add Album Action
+    @IBAction func addAlbumPressed(_ sender: UIBarButtonItem) {
+        
+        let alertController = UIAlertController(title: "Добавить отфильтрованные фотографии в альбом?", message: nil, preferredStyle: .alert)
+        
+        let inputAction = UIAlertAction(title: "Добавить", style: .default) { [weak alertController] _ in
+            if let alertController = alertController {
+                let albumNameTextField = alertController.textFields![0] as UITextField
+                
+              AlbumCreator.createAlbum(with: albumNameTextField.text!, assets: self.filteredAssets)
+            }
+        }
+        inputAction.isEnabled = false
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Имя альбома"
+            
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { notification in
+                inputAction.isEnabled = textField.text != ""
+            }
+        }
+        
+        let canсelAction = UIAlertAction(title: "Отмена", style: .cancel) { _ in
+            
+        }
+        alertController.addAction(inputAction)
+        alertController.addAction(canсelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
+    
     // Assets Data
     var assets = [PHAsset]()
     var filteredAssets = [PHAsset]()
@@ -28,20 +63,47 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // set icons
         likeRatingControl.iconName = "Like"
         circleRatingControl.iconName = "Circle"
         
         [likeRatingControl,circleRatingControl,starRatingControl].forEach { $0.delegate = self }
         
-        // load assets
-        assets = ImagesLoader.loadAssets()
+        // check for authorization and load assets
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            assets = ImagesLoader.loadAssets()
+        case .denied, .restricted:
+            showAuthError()
+        case .notDetermined:
+            // ask for permissions
+            PHPhotoLibrary.requestAuthorization() { status in
+                switch status {
+                case .authorized:
+                    self.assets = ImagesLoader.loadAssets()
+                case .denied, .restricted:
+                    self.showAuthError()
+                case .notDetermined: 
+                    break
+                }
+            }
+        }
         
         // Setup collection
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
+    func showAuthError() {
+        let alert = UIAlertController(title: "Не удаётся загрузить фото без вашего разрешения. Разрешите доступ к фото в настройках.", message: nil, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default) { _ in
+        }
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,9 +114,11 @@ class GalleryViewController: UIViewController {
         if ratingLoader.filter.hasAtLeastOnePoint {
             filteredAssets = ImagesLoader.assets(assets: assets,
                                                  filteredBy: ratingLoader.filteredResults.keys.map{ $0 })
+            addButton.isEnabled = true
         }
         else {
             filteredAssets = assets
+            addButton.isEnabled = false
         }
         collectionView.reloadData()
     }

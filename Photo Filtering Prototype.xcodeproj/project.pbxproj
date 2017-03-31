@@ -17,6 +17,7 @@
 		758514A81E8AC8AD007A09E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758514A61E8AC8AD007A09E8 /* LaunchScreen.storyboard */; };
 		75C77CBE1E8BE35D00F29247 /* ImagesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C77CBD1E8BE35D00F29247 /* ImagesLoader.swift */; };
 		75C77CC01E8BEAF200F29247 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C77CBF1E8BEAF200F29247 /* PhotoCell.swift */; };
+		75CE03971E8E54D4005106B3 /* AlbumCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE03961E8E54D4005106B3 /* AlbumCreator.swift */; };
 		75D054881E8AD68C0086A4D6 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D054871E8AD68C0086A4D6 /* RatingControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		758514A91E8AC8AD007A09E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75C77CBD1E8BE35D00F29247 /* ImagesLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesLoader.swift; sourceTree = "<group>"; };
 		75C77CBF1E8BEAF200F29247 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		75CE03961E8E54D4005106B3 /* AlbumCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCreator.swift; sourceTree = "<group>"; };
 		75D054871E8AD68C0086A4D6 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 		7580AABD1E8C2C4900372FD1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				75CE03961E8E54D4005106B3 /* AlbumCreator.swift */,
 				4F5D126B1E8CE220001A8D39 /* RatingsLoader.swift */,
 				4F5D126D1E8CE4CE001A8D39 /* PhotoRating.swift */,
 				75C77CBD1E8BE35D00F29247 /* ImagesLoader.swift */,
@@ -191,6 +194,7 @@
 				75C77CC01E8BEAF200F29247 /* PhotoCell.swift in Sources */,
 				75D054881E8AD68C0086A4D6 /* RatingControl.swift in Sources */,
 				4F5D126E1E8CE4CE001A8D39 /* PhotoRating.swift in Sources */,
+				75CE03971E8E54D4005106B3 /* AlbumCreator.swift in Sources */,
 				4F5D126C1E8CE220001A8D39 /* RatingsLoader.swift in Sources */,
 				7580AABF1E8C2CAC00372FD1 /* PhotoViewController.swift in Sources */,
 				75C77CBE1E8BE35D00F29247 /* ImagesLoader.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zzf-5I-fsV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zzf-5I-fsV">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -100,8 +100,15 @@
                             <constraint firstItem="T7o-Pr-v8T" firstAttribute="top" secondItem="yw0-B3-DpF" secondAttribute="bottom" constant="16" id="g0G-z7-PWF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="GNT-3V-p1v"/>
+                    <navigationItem key="navigationItem" id="GNT-3V-p1v">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="ihf-iQ-aj8">
+                            <connections>
+                                <action selector="addAlbumPressed:" destination="BYZ-38-t0r" id="Pk1-ie-AWQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="ihf-iQ-aj8" id="xQH-sy-LEd"/>
                         <outlet property="circleRatingControl" destination="JDo-Io-RKT" id="swH-jl-EdZ"/>
                         <outlet property="collectionView" destination="T7o-Pr-v8T" id="hBK-ED-wcl"/>
                         <outlet property="likeRatingControl" destination="Hsy-Yp-Y18" id="bsr-hU-Xsw"/>

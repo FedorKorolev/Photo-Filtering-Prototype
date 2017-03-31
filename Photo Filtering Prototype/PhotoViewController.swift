@@ -33,7 +33,7 @@ class PhotoViewController: UIViewController {
         updateButtons()
     }
     
-    // Outlets
+    // Outlets and Actions
     @IBOutlet weak var imageView: UIImageView!
     
     @IBAction func starPressed(_ sender: UIButton) {
@@ -51,6 +51,10 @@ class PhotoViewController: UIViewController {
         saveRatingAndUpdateUI()
     }
     
+    
+    
+    
+    // Methods
     private func saveRatingAndUpdateUI(){
         ratingLoader.update(rating: rating)
         ratingLoader.saveRatings()

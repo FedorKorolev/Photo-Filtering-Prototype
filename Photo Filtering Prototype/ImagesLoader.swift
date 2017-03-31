@@ -11,6 +11,7 @@ import Photos
 struct ImagesLoader {
     
     static func loadAssets() -> [PHAsset] {
+        
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchOptions.includeAssetSourceTypes = .typeUserLibrary
@@ -50,8 +51,6 @@ struct ImagesLoader {
                                                     loadedImage = im
                                                 }
         }
-        
-        
         return loadedImage
     }
 }
